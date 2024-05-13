@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  LoginScreenView.swift
 //  PortfolioApp
 //
 //  Created by Adriano Valumin on 12/05/24.
@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct LoginScreenView: View {
     // MARK: - Properties
+    @Environment(\.dismiss) var dismiss
 
     @State private var userEmail: String = ""
     @State private var userPassword: String = ""
@@ -24,14 +25,16 @@ struct ContentView: View {
     // MARK: - Body
 
     var body: some View {
-        ZStack {
-            backgroundView
+        NavigationStack {
+            ZStack {
+                backgroundView
 
-            ScrollView {
-                headerView
-                loginSectionView
+                ScrollView {
+                    headerView
+                    loginSectionView
+                }
             }
-        }
+        }.navigationBarBackButtonHidden()
     }
 
     // MARK: - Background
@@ -56,7 +59,11 @@ struct ContentView: View {
     var headerView: some View {
         VStack {
             HStack {
-                Image(systemName: "arrow.backward")
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    Image(systemName: "arrow.backward")
+                })
 
                 Spacer()
 
@@ -270,5 +277,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    LoginScreenView()
 }
