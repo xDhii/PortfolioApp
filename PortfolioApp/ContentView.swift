@@ -170,9 +170,20 @@ struct ContentView: View {
                                 colors: gradientColors,
                                 startPoint: .leading,
                                 endPoint: .trailing
-                            )
+                            ).opacity(0.85)
                         )
                         .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+                        .overlay(
+                            RoundedRectangle(
+                                cornerRadius: cornerRadius)
+                                .stroke(
+                                    LinearGradient(
+                                        colors: gradientColors,
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
+                        )
                 })
 
                 VStack {
@@ -182,9 +193,9 @@ struct ContentView: View {
                         // Do nothing
                     }, label: {
                         Text("Forgot your password?")
-                            .fontWeight(.ultraLight)
-                            .foregroundStyle(.black)
-                            .underline(pattern: .solid, color: .gray.opacity(0.3))
+                            .fontWeight(.light)
+                            .foregroundStyle(.black.opacity(0.6))
+                            .underline(pattern: .solid, color: .gray.opacity(0.25))
                     })
                     .padding(.top)
                 }
