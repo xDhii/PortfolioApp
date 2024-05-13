@@ -13,6 +13,11 @@ struct ContentView: View {
     @State private var userPassword: String = ""
     @FocusState private var isPasswordFieldFocused: Bool
 
+    private var gradientColors = [
+        Color(red: 77 / 255, green: 87 / 255, blue: 243 / 255),
+        Color(red: 190 / 255, green: 68 / 255, blue: 248 / 255),
+    ]
+
     var body: some View {
         ZStack {
             backgroundView
@@ -89,14 +94,17 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity, maxHeight: 48)
                     .overlay(
                         RoundedRectangle(cornerRadius: 7)
-                            .stroke(LinearGradient(
-                                colors: [
-                                    Color(red: 77 / 255, green: 87 / 255, blue: 243 / 255),
-                                    Color(red: 190 / 255, green: 68 / 255, blue: 248 / 255),
-                                ],
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            ), lineWidth: 1)
+                            .stroke(
+                                LinearGradient(
+                                    colors: isEmailFieldFocused ? [
+                                        Color(red: 77 / 255, green: 87 / 255, blue: 243 / 255),
+                                        Color(red: 190 / 255, green: 68 / 255, blue: 248 / 255),
+                                    ] : [Color.black],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                ),
+                                lineWidth: 1
+                            )
                     )
             }
             .padding()
@@ -107,6 +115,8 @@ struct ContentView: View {
                     .fontWeight(.light)
 
                 SecureField("\(Image(systemName: "lock"))", text: $userPassword)
+                    .foregroundStyle(.black)
+                    .focused($isPasswordFieldFocused)
                     .padding()
                     .fontWeight(.light)
                     .keyboardType(.emailAddress)
@@ -115,13 +125,15 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 7)
                             .stroke(
                                 LinearGradient(
-                                    colors: [
+                                    colors: isPasswordFieldFocused ? [
                                         Color(red: 77 / 255, green: 87 / 255, blue: 243 / 255),
                                         Color(red: 190 / 255, green: 68 / 255, blue: 248 / 255),
-                                    ],
+                                    ] : [Color.black],
                                     startPoint: .leading,
                                     endPoint: .trailing
-                                ), lineWidth: 1)
+                                ),
+                                lineWidth: 1
+                            )
                     )
             }
             .padding()
