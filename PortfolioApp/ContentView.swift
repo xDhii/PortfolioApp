@@ -8,23 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
+    // MARK: - Properties
+
     @State private var userEmail: String = ""
-    @FocusState private var isEmailFieldFocused: Bool
     @State private var userPassword: String = ""
+    @FocusState private var isEmailFieldFocused: Bool
     @FocusState private var isPasswordFieldFocused: Bool
 
+    private var cornerRadius = 7.0
     private var gradientColors = [
         Color(red: 77 / 255, green: 87 / 255, blue: 243 / 255),
         Color(red: 190 / 255, green: 68 / 255, blue: 248 / 255),
     ]
 
+    // MARK: - Body
+
     var body: some View {
         ZStack {
             backgroundView
-            headerView
-            mainView
+
+            ScrollView {
+                headerView
+                loginSectionView
+            }
         }
     }
+
+    // MARK: - Views
 
     var backgroundView: some View {
         ZStack {
@@ -41,6 +51,8 @@ struct ContentView: View {
         }
     }
 
+    // MARK: - Subviews
+
     var headerView: some View {
         VStack {
             HStack {
@@ -50,8 +62,9 @@ struct ContentView: View {
 
                 Text("Sign In to")
                     .padding(.horizontal, 24)
+                    .padding(.bottom, 16)
                     .fontWeight(.medium)
-                    .frame(height: 24.0)
+                    .frame(maxHeight: 24.0)
 
                 Spacer()
             }
@@ -78,8 +91,10 @@ struct ContentView: View {
         }
     }
 
-    var mainView: some View {
+    var loginSectionView: some View {
         VStack {
+            // MARK: - Email Login
+
             VStack(alignment: .leading) {
                 Text("E-mail")
                     .font(.system(size: 14))
@@ -93,7 +108,7 @@ struct ContentView: View {
                     .keyboardType(.emailAddress)
                     .frame(maxWidth: .infinity, maxHeight: 48)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 7)
+                        RoundedRectangle(cornerRadius: cornerRadius)
                             .stroke(
                                 LinearGradient(
                                     colors: isEmailFieldFocused ? [
@@ -107,7 +122,10 @@ struct ContentView: View {
                             )
                     )
             }
-            .padding()
+            .padding(.horizontal)
+            .padding(.bottom)
+
+            // MARK: - Password Login
 
             VStack(alignment: .leading) {
                 Text("Password")
@@ -122,13 +140,10 @@ struct ContentView: View {
                     .keyboardType(.emailAddress)
                     .frame(maxWidth: .infinity, maxHeight: 48)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 7)
+                        RoundedRectangle(cornerRadius: cornerRadius)
                             .stroke(
                                 LinearGradient(
-                                    colors: isPasswordFieldFocused ? [
-                                        Color(red: 77 / 255, green: 87 / 255, blue: 243 / 255),
-                                        Color(red: 190 / 255, green: 68 / 255, blue: 248 / 255),
-                                    ] : [Color.black],
+                                    colors: isPasswordFieldFocused ? gradientColors : [Color.black],
                                     startPoint: .leading,
                                     endPoint: .trailing
                                 ),
@@ -136,7 +151,109 @@ struct ContentView: View {
                             )
                     )
             }
+            .padding(.horizontal)
+            .padding(.bottom)
+
+            VStack {
+                // MARK: - Login Button
+
+                Button(action: {
+                    // Do nothing
+                }, label: {
+                    Text("Continue \(Image(systemName: "arrow.forward"))")
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity, maxHeight: 32)
+                        .padding(.vertical)
+                        .background(
+                            LinearGradient(
+                                colors: gradientColors,
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+                })
+
+                VStack {
+                    // MARK: - Forgot Password
+
+                    Button(action: {
+                        // Do nothing
+                    }, label: {
+                        Text("Forgot your password?")
+                            .fontWeight(.ultraLight)
+                            .foregroundStyle(.black)
+                            .underline(pattern: .solid, color: .gray.opacity(0.3))
+                    })
+                    .padding(.top)
+                }
+            }
             .padding()
+
+            // MARK: - Or Divider
+
+            HStack {
+                VStack {
+                    Divider()
+                        .background(.black)
+                }
+                VStack {
+                    Text("or")
+                        .fontWeight(.light)
+                        .foregroundStyle(.gray)
+                        .padding(.horizontal)
+                }
+                VStack {
+                    Divider()
+                        .background(.black)
+                }
+            }
+            .padding(.horizontal)
+            .padding(.bottom, 16)
+
+            // MARK: - Social Login
+
+            VStack {
+                Button(action: {
+                    // Do nothing
+                }, label: {
+                    HStack {
+                        Image(systemName: "apple.logo")
+                            .resizable()
+                            .scaledToFit()
+
+                        Text("Sign In with Apple")
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: 24)
+                    .padding()
+                    .foregroundStyle(.black)
+                    .background(Color(red: 237 / 255, green: 242 / 255, blue: 254 / 255))
+                    .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+                    .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(.black.opacity(0.2)))
+                })
+                .padding(.bottom)
+
+                Button(action: {
+                    // Do nothing
+                }, label: {
+                    HStack {
+                        Image("icon-colored-google")
+                            .resizable()
+                            .scaledToFit()
+
+                        Text("Sign In with Google")
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: 24)
+                    .padding()
+                    .foregroundStyle(.black)
+                    .background(Color(red: 237 / 255, green: 242 / 255, blue: 254 / 255))
+                    .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+                    .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(.black.opacity(0.2)))
+                })
+                .padding(.bottom)
+            }
+            .padding(.horizontal)
         }
     }
 }
