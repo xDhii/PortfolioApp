@@ -34,7 +34,7 @@ struct ContentView: View {
         }
     }
 
-    // MARK: - Views
+    // MARK: - Background
 
     var backgroundView: some View {
         ZStack {
@@ -100,7 +100,7 @@ struct ContentView: View {
                     .font(.system(size: 14))
                     .fontWeight(.light)
 
-                TextField("\(Image(systemName: "envelope")) \("example@gmail.com")", text: $userEmail, prompt: Text?.none)
+                TextField("\(Image(systemName: "envelope")) \("example@email.com")", text: $userEmail, prompt: Text?.none)
                     .foregroundStyle(.black)
                     .focused($isEmailFieldFocused)
                     .padding()
@@ -132,7 +132,7 @@ struct ContentView: View {
                     .font(.system(size: 14))
                     .fontWeight(.light)
 
-                SecureField("\(Image(systemName: "lock"))", text: $userPassword)
+                SecureField("\(Image(systemName: "lock")) Your password", text: $userPassword)
                     .foregroundStyle(.black)
                     .focused($isPasswordFieldFocused)
                     .padding()
