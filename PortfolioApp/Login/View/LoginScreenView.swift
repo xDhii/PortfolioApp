@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginScreenView: View {
     // MARK: - Properties
+
     @Environment(\.dismiss) var dismiss
 
     @State private var userEmail: String = ""
@@ -27,6 +28,9 @@ struct LoginScreenView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+                Color.white
+                    .ignoresSafeArea()
+
                 backgroundView
 
                 ScrollView {
