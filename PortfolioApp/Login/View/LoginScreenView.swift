@@ -104,69 +104,18 @@ struct LoginScreenView: View {
 
     var loginSectionView: some View {
         VStack {
-            // MARK: - Email Login
+            // MARK: - Login Fields
 
-            VStack(alignment: .leading) {
-                Text("E-mail")
-                    .font(.system(size: 14))
-                    .fontWeight(.light)
+            TextFieldView(fieldName: "E-mail", placeHolder: "example@email.com", iconName: "envelope")
+                .padding(.horizontal)
+                .padding(.bottom)
 
-                TextField("\(Image(systemName: "envelope")) \("example@email.com")", text: $userEmail, prompt: Text?.none)
-                    .foregroundStyle(.black)
-                    .focused($isEmailFieldFocused)
-                    .padding()
-                    .fontWeight(.light)
-                    .keyboardType(.emailAddress)
-                    .frame(maxWidth: .infinity, maxHeight: 48)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: cornerRadius)
-                            .stroke(
-                                LinearGradient(
-                                    colors: isEmailFieldFocused ? [
-                                        Color(red: 77 / 255, green: 87 / 255, blue: 243 / 255),
-                                        Color(red: 190 / 255, green: 68 / 255, blue: 248 / 255),
-                                    ] : [Color.black],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                ),
-                                lineWidth: 1
-                            )
-                    )
-            }
-            .padding(.horizontal)
-            .padding(.bottom)
-
-            // MARK: - Password Login
-
-            VStack(alignment: .leading) {
-                Text("Password")
-                    .font(.system(size: 14))
-                    .fontWeight(.light)
-
-                SecureField("\(Image(systemName: "lock")) Your password", text: $userPassword)
-                    .foregroundStyle(.black)
-                    .focused($isPasswordFieldFocused)
-                    .padding()
-                    .fontWeight(.light)
-                    .keyboardType(.emailAddress)
-                    .frame(maxWidth: .infinity, maxHeight: 48)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: cornerRadius)
-                            .stroke(
-                                LinearGradient(
-                                    colors: isPasswordFieldFocused ? gradientColors : [Color.black],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                ),
-                                lineWidth: 1
-                            )
-                    )
-            }
-            .padding(.horizontal)
-            .padding(.bottom)
+            TextFieldView(secureField: true, fieldName: "Password", placeHolder: "Your password", iconName: "lock")
+                .padding(.horizontal)
+                .padding(.bottom)
 
             VStack {
-                // MARK: - Login Button
+                // MARK: - Login Buttons
 
                 Button(action: {
                     // Do nothing
