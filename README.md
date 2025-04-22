@@ -6,4 +6,4 @@
 
 # Basic register screen to add users to a List. 
 
-<img width="443" alt="image" src="https://github.com/user-attachments/assets/b50df8f4-2d51-4f0c-a415-1d74c919fe93" />
+<img width="339" alt="image" src="https://github.com/user-attachments/assets/5ad5500c-fe7a-423f-9f77-a26f4fce1620" />
