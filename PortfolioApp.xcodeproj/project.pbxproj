@@ -15,6 +15,7 @@
 		BC604AB72BF2812000DBA229 /* MainAppListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC604AB62BF2812000DBA229 /* MainAppListView.swift */; };
 		BC604ABA2BF285BF00DBA229 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC604AB92BF285BF00DBA229 /* UINavigationController+.swift */; };
 		BCE27E0F2BF416F200A279B5 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE27E0E2BF416F200A279B5 /* TextFieldView.swift */; };
+		BCEB8A092DB85F64008A9E43 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEB8A082DB85F60008A9E43 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		BC604AB62BF2812000DBA229 /* MainAppListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppListView.swift; sourceTree = "<group>"; };
 		BC604AB92BF285BF00DBA229 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		BCE27E0E2BF416F200A279B5 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		BCEB8A082DB85F60008A9E43 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +62,8 @@
 		BC604AA52BF10DA000DBA229 /* PortfolioApp */ = {
 			isa = PBXGroup;
 			children = (
-				BC604ABB2BF285DB00DBA229 /* Login */,
+				BCEB8A072DB85F43008A9E43 /* RegisterApp */,
+				BC604ABB2BF285DB00DBA229 /* LoginApp */,
 				BC604AB82BF285A800DBA229 /* Extensions */,
 				BC604AA62BF10DA000DBA229 /* PortfolioAppApp.swift */,
 				BC604AB62BF2812000DBA229 /* MainAppListView.swift */,
@@ -86,12 +89,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		BC604ABB2BF285DB00DBA229 /* Login */ = {
+		BC604ABB2BF285DB00DBA229 /* LoginApp */ = {
 			isa = PBXGroup;
 			children = (
 				BC604ABD2BF2878500DBA229 /* View */,
 			);
-			path = Login;
+			path = LoginApp;
 			sourceTree = "<group>";
 		};
 		BC604ABC2BF285E400DBA229 /* Components */ = {
@@ -109,6 +112,14 @@
 				BC604ABC2BF285E400DBA229 /* Components */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		BCEB8A072DB85F43008A9E43 /* RegisterApp */ = {
+			isa = PBXGroup;
+			children = (
+				BCEB8A082DB85F60008A9E43 /* RegisterView.swift */,
+			);
+			path = RegisterApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +196,7 @@
 				BC604AA92BF10DA000DBA229 /* LoginScreenView.swift in Sources */,
 				BCE27E0F2BF416F200A279B5 /* TextFieldView.swift in Sources */,
 				BC604ABA2BF285BF00DBA229 /* UINavigationController+.swift in Sources */,
+				BCEB8A092DB85F64008A9E43 /* RegisterView.swift in Sources */,
 				BC604AB72BF2812000DBA229 /* MainAppListView.swift in Sources */,
 				BC604AA72BF10DA000DBA229 /* PortfolioAppApp.swift in Sources */,
 			);
